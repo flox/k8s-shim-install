@@ -1,0 +1,46 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: flox-sandbox # name of the target cluster for this node group
+  region: us-east-1
+
+# adjust this to match your existing or desired node group configuration -- below values are examples
+managedNodeGroups:
+  - name: flox
+    instanceType: t3.small
+    amiFamily: AmazonLinux2023
+    desiredCapacity: 1
+    minSize: 0
+    maxSize: 5
+    spot: true
+    privateNetworking: false # match networking configuration to your existing node group
+    volumeSize: 20
+    labels:
+      # any node labels
+      flox.dev/enabled: "true" # used in RuntimeClass to ensure flox workloads only end up on these nodes
+    tags:
+      # any node tags, e.g.
+      # k8s.io/cluster-autoscaler/enabled: "true"
+      # k8s.io/cluster-autoscaler/flox-sandbox: "owned"
+    preBootstrapCommands:
+      - |
+         dnf install -y https://flox.dev/downloads/yumrepo/flox.x86_64-linux.rpm
+         flox activate -r flox-public/containerd-shim-flox-installer --trust
+    overrideBootstrapCommand: |
+      apiVersion: node.eks.aws/v1alpha1
+      kind: NodeConfig
+      spec:
+        containerd:
+          config: |
+            [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.flox]
+              # Our shim is a build of the runc shim with hooks, so override runtime_path
+              # here but otherwise obey all the runc protocol specifications.
+              runtime_path = "/usr/local/bin/containerd-shim-flox-v2"
+              runtime_type = "io.containerd.runc.v2"
+              # Whitelist all annotations starting with "flox.dev/"
+              pod_annotations = [ "flox.dev/*" ]
+              container_annotations = [ "flox.dev/*" ]
+            [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.flox.options]
+              SystemdCgroup = true
+
