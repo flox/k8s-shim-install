@@ -27,17 +27,10 @@ managedNodeGroups:
     volumeSize: 50
     labels:
       flox.dev/enabled: "true"
-    tags:
-      # Autoscaler discovery tags
-      k8s.io/cluster-autoscaler/enabled: "true"
-      k8s.io/cluster-autoscaler/flox-sandbox: "owned"
-    iam:
-      withAddonPolicies:
-        autoScaler: true
     preBootstrapCommands:
       - |
          dnf install -y https://flox.dev/downloads/yumrepo/flox.x86_64-linux.rpm
-         flox activate -r flox-public/containerd-shim-flox-v2 --trust
+         flox activate -r flox/containerd-shim-flox-installer --trust
     overrideBootstrapCommand: |
       apiVersion: node.eks.aws/v1alpha1
       kind: NodeConfig
