@@ -13,7 +13,6 @@ managedNodeGroups:
     desiredCapacity: 1
     minSize: 0
     maxSize: 5
-    spot: true
     privateNetworking: false # match networking configuration to your existing node group
     volumeSize: 20
     labels:
