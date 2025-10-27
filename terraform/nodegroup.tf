@@ -15,8 +15,8 @@ module "eks_managed_node_group" {
 
   ami_type     = "AL2023_x86_64_STANDARD"
   desired_size = 1
-  min_size     = 1
-  max_size     = 1
+  min_size     = 0
+  max_size     = 10
 
   iam_role_additional_policies = {
     AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"

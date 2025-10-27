@@ -57,15 +57,30 @@ module "eks" {
       instance_types = ["t3.small"]
 
       ami_type     = "AL2023_x86_64_STANDARD"
-      desired_size = 0
+      desired_size = 1
       min_size     = 0
-      max_size     = 1
+      max_size     = 10
 
-      disk_size  = 50
       subnet_ids = module.vpc.private_subnets
 
       iam_role_additional_policies = {
         AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+      }
+
+      block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 50
+            volume_type           = "gp3"
+            encrypted             = true
+            delete_on_termination = true
+          }
+        }
+      }
+
+      labels = {
+        "flox.dev/enabled" = "true"
       }
 
       cloudinit_pre_nodeadm = [
