@@ -11,10 +11,10 @@ managedNodeGroups:
     instanceType: t3.small
     amiFamily: AmazonLinux2023
     desiredCapacity: 1
-    minSize: 0
-    maxSize: 5
+    minSize: 1
+    maxSize: 10
     privateNetworking: false # match networking configuration to your existing node group
-    volumeSize: 20
+    volumeSize: 50
     labels:
       # any node labels
       flox.dev/enabled: "true" # used in RuntimeClass to ensure flox workloads only end up on these nodes

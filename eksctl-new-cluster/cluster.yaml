@@ -23,7 +23,7 @@ managedNodeGroups:
     amiFamily: AmazonLinux2023
     desiredCapacity: 1
     minSize: 1
-    maxSize: 1
+    maxSize: 10
     volumeSize: 50
     labels:
       flox.dev/enabled: "true"
