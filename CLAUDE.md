@@ -8,9 +8,10 @@ This repository contains infrastructure-as-code configurations for deploying Ama
 
 ## Repository Structure
 
-- `terraform/` - Terraform configurations for creating EKS clusters with Flox shim
-- `eksctl-new-cluster/` - eksctl configuration for creating a new EKS cluster with Flox shim
-- `eksctl-new-nodegroup/` - eksctl configuration for adding a Flox-enabled node group to an existing cluster
+- `terraform/new-cluster/` - Terraform configuration for creating a complete EKS cluster with VPC and Flox shim
+- `terraform/new-nodegroup/` - Terraform configuration for adding a Flox-enabled node group to an existing cluster (copy into existing Terraform config)
+- `eksctl/new-cluster/` - eksctl configuration for creating a new EKS cluster with Flox shim
+- `eksctl/new-nodegroup/` - eksctl configuration for adding a Flox-enabled node group to an existing cluster
 
 ## Architecture
 
@@ -20,7 +21,7 @@ All configurations follow the same pattern for installing and configuring the Fl
 
 1. **Pre-bootstrap**: Install Flox CLI and activate the containerd-shim-flox-installer environment
    - Installs Flox RPM from `https://flox.dev/downloads/yumrepo/flox.x86_64-linux.rpm`
-   - Activates `flox/containerd-shim-flox-installer` (or `flox-public/containerd-shim-flox-installer`)
+   - Activates `flox/containerd-shim-flox-installer`
 
 2. **Containerd Configuration**: Configure a custom runtime named "flox"
    - Runtime path: `/usr/local/bin/containerd-shim-flox-v2`
@@ -47,8 +48,8 @@ Key characteristics:
 ### eksctl Implementation
 
 Two separate configurations:
-- `eksctl-new-cluster/cluster.yaml` - Creates a complete cluster from scratch
-- `eksctl-new-nodegroup/nodegroup.yaml` - Adds a Flox-enabled node group to an existing cluster
+- `eksctl/new-cluster/cluster.yaml` - Creates a complete cluster from scratch
+- `eksctl/new-nodegroup/nodegroup.yaml` - Adds a Flox-enabled node group to an existing cluster
 
 Both use:
 - `preBootstrapCommands` for Flox installation
@@ -60,7 +61,7 @@ Both use:
 
 ```bash
 # Initialize Terraform
-cd terraform
+cd terraform/new-cluster
 terraform init
 
 # Plan changes
@@ -80,10 +81,10 @@ terraform fmt
 
 ```bash
 # Create a new cluster
-eksctl create cluster -f eksctl-new-cluster/cluster.yaml
+eksctl create cluster -f eksctl/new-cluster/cluster.yaml
 
 # Add node group to existing cluster
-eksctl create nodegroup -f eksctl-new-nodegroup/nodegroup.yaml
+eksctl create nodegroup -f eksctl/new-nodegroup/nodegroup.yaml
 
 # Delete cluster
 eksctl delete cluster --name flox --region us-east-1
@@ -94,13 +95,7 @@ eksctl delete nodegroup --cluster flox-sandbox --name flox --region us-east-1
 
 ## Important Configuration Details
 
-### Installer Path Differences
-
-- Terraform: Uses `flox/containerd-shim-flox-installer` with `-g 2` flag
-- eksctl cluster: Uses `flox/containerd-shim-flox-installer` with `--trust` flag
-- eksctl nodegroup: Uses `flox-public/containerd-shim-flox-installer` with `--trust` flag
-
-These differences are intentional based on the deployment scenario.
+All configurations use consistent Flox installer activation commands.
 
 ### Version Requirements
 
@@ -115,12 +110,10 @@ When modifying configurations:
 - Keep IAM policies scoped to minimum required permissions
 - Update `endpoint_public_access_cidrs` to restrict cluster access appropriately
 - Ensure EBS volumes remain encrypted
-- Maintain SSM access via `AmazonSSMManagedInstanceCore` policy for troubleshooting
 
 ## Node Configuration
 
 All node groups include:
 - t3.small instances (configurable)
 - 50GB gp3 encrypted EBS volumes
-- SSM Manager access for remote debugging
 - The label `flox.dev/enabled: "true"` for RuntimeClass targeting
