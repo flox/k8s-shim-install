@@ -11,8 +11,6 @@ availabilityZones:
   - us-east-1b
 
 vpc:
-
-  # Restrict control plane to your IP, but keep private access so nodes can join
   clusterEndpoints:
     publicAccess: true
     privateAccess: true

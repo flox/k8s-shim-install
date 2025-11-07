@@ -11,7 +11,7 @@ managedNodeGroups:
     instanceType: t3.small
     amiFamily: AmazonLinux2023
     desiredCapacity: 1
-    minSize: 1
+    minSize: 0
     maxSize: 10
     privateNetworking: false # match networking configuration to your existing node group
     volumeSize: 50
@@ -25,7 +25,7 @@ managedNodeGroups:
     preBootstrapCommands:
       - |
          dnf install -y https://flox.dev/downloads/yumrepo/flox.x86_64-linux.rpm
-         flox activate -r flox-public/containerd-shim-flox-installer --trust
+         flox activate -r flox/containerd-shim-flox-installer --trust
     overrideBootstrapCommand: |
       apiVersion: node.eks.aws/v1alpha1
       kind: NodeConfig
@@ -42,4 +42,21 @@ managedNodeGroups:
               container_annotations = [ "flox.dev/*" ]
             [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.flox.options]
               SystemdCgroup = true
+
+# required if cluster was not created with eksctl, see https://docs.aws.amazon.com/eks/latest/eksctl/unowned-clusters.html#create-nodegroup
+# vpc:
+#   id: "vpc-12345"
+#   securityGroup: "sg-12345"    # this is the ControlPlaneSecurityGroup
+#   subnets:
+#     # should match the IDs of subnets attached to existing node group
+#     private:
+#       private1:
+#         id: "subnet-12345"
+#       private2:
+#         id: "subnet-67890"
+#     public:
+#       public1:
+#         id: "subnet-12345"
+#       public2:
+#         id: "subnet-67890"
 

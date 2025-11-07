@@ -2,7 +2,7 @@ data "aws_availability_zones" "available" {}
 
 locals {
   name   = "flox-eks-tf"
-  region = "eu-east-1"
+  region = "us-east-1"
 
   vpc_cidr = "10.0.0.0/16"
   azs      = slice(data.aws_availability_zones.available.names, 0, 3)
@@ -35,7 +35,6 @@ module "eks" {
   subnet_ids = module.vpc.private_subnets
 
   endpoint_public_access       = true
-  endpoint_public_access_cidrs = ["65.21.10.97/32"]
 
   enable_cluster_creator_admin_permissions = true
 
@@ -63,10 +62,6 @@ module "eks" {
 
       subnet_ids = module.vpc.private_subnets
 
-      iam_role_additional_policies = {
-        AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-      }
-
       block_device_mappings = {
         xvda = {
           device_name = "/dev/xvda"
@@ -89,7 +84,7 @@ module "eks" {
           content      = <<-EOT
             #!/bin/bash
             dnf install -y https://flox.dev/downloads/yumrepo/flox.x86_64-linux.rpm
-            flox activate -r flox/containerd-shim-flox-installer --trust -g 2
+            flox activate -r flox/containerd-shim-flox-installer --trust
           EOT
         },
         {
