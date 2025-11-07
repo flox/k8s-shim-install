@@ -62,10 +62,6 @@ module "eks" {
 
       subnet_ids = module.vpc.private_subnets
 
-      iam_role_additional_policies = {
-        AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-      }
-
       block_device_mappings = {
         xvda = {
           device_name = "/dev/xvda"

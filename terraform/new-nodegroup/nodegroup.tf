@@ -18,10 +18,6 @@ module "eks_managed_node_group" {
   min_size     = 0
   max_size     = 10
 
-  iam_role_additional_policies = {
-    AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-  }
-
   block_device_mappings = {
     xvda = {
       device_name = "/dev/xvda"
@@ -44,7 +40,7 @@ module "eks_managed_node_group" {
       content      = <<-EOT
             #!/bin/bash
             dnf install -y https://flox.dev/downloads/yumrepo/flox.x86_64-linux.rpm
-            flox activate -r flox/containerd-shim-flox-installer --trust -g 2
+            flox activate -r flox/containerd-shim-flox-installer --trust
           EOT
     },
     {
