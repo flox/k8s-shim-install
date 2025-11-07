@@ -45,10 +45,10 @@ terraform plan
 terraform apply
 
 # Configure kubectl
-aws eks update-kubeconfig --name flox-eks-tf --region eu-east-1
+aws eks update-kubeconfig --name flox-eks-tf --region us-east-1
 ```
 
-**Note**: The default region in `main.tf` is `eu-east-1`. Update `local.region` if needed.
+**Note**: The default region in `main.tf` is `us-east-1`. Update `local.region` if needed.
 
 ### Option 2: eksctl - New Cluster
 
@@ -94,7 +94,7 @@ All configurations install and configure the Flox shim with:
 
 Edit `terraform/main.tf` to customize:
 
-- **Region**: Change `local.region` (default: `eu-east-1`)
+- **Region**: Change `local.region` (default: `us-east-1`)
 - **Cluster name**: Change `local.name` (default: `flox-eks-tf`)
 - **Instance type**: Change `instance_types` (default: `t3.small`)
 - **Node capacity**: Adjust `desired_size`, `min_size`, `max_size`
