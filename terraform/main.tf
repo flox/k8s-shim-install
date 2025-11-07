@@ -88,7 +88,7 @@ module "eks" {
           content      = <<-EOT
             #!/bin/bash
             dnf install -y https://flox.dev/downloads/yumrepo/flox.x86_64-linux.rpm
-            flox activate -r flox/containerd-shim-flox-installer --trust -g 2
+            flox activate -r flox/containerd-shim-flox-installer --trust
           EOT
         },
         {
