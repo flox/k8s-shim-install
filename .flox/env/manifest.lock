@@ -3,11 +3,14 @@
   "manifest": {
     "version": 1,
     "install": {
+      "awscli2": {
+        "pkg-path": "awscli2"
+      },
       "eksctl": {
         "pkg-path": "eksctl"
       },
-      "terraform": {
-        "pkg-path": "terraform"
+      "opentofu": {
+        "pkg-path": "opentofu"
       }
     },
     "hook": {},
@@ -15,6 +18,130 @@
     "options": {}
   },
   "packages": [
+    {
+      "attr_path": "awscli2",
+      "broken": false,
+      "derivation": "/nix/store/3110f0gpn499f2ldy80ra7mp2xznwccf-awscli2-2.30.6.drv",
+      "description": "Unified tool to manage your AWS services",
+      "install_id": "awscli2",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=7df7ff7d8e00218376575f0acdcc5d66741351ee",
+      "name": "awscli2-2.30.6",
+      "pname": "awscli2",
+      "rev": "7df7ff7d8e00218376575f0acdcc5d66741351ee",
+      "rev_count": 870157,
+      "rev_date": "2025-10-02T04:57:58Z",
+      "scrape_date": "2025-10-03T04:40:08.435950Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.30.6",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/s4f1czrm7wdkjw65lpimbqq6jkfzy2my-awscli2-2.30.6-dist",
+        "out": "/nix/store/i08y6gn9acczi56lyklgq7b09r3vrwna-awscli2-2.30.6"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "awscli2",
+      "broken": false,
+      "derivation": "/nix/store/k8g2qwz6gh9kaccs8lj07nzkyshrirgh-awscli2-2.30.6.drv",
+      "description": "Unified tool to manage your AWS services",
+      "install_id": "awscli2",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=7df7ff7d8e00218376575f0acdcc5d66741351ee",
+      "name": "awscli2-2.30.6",
+      "pname": "awscli2",
+      "rev": "7df7ff7d8e00218376575f0acdcc5d66741351ee",
+      "rev_count": 870157,
+      "rev_date": "2025-10-02T04:57:58Z",
+      "scrape_date": "2025-10-03T04:56:37.982341Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.30.6",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/jxzvmmcnkv6n0vbm7ls9nxcjylaynjmb-awscli2-2.30.6-dist",
+        "out": "/nix/store/b68fb60nadsb8s487viqwljkvvrygk1z-awscli2-2.30.6"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "awscli2",
+      "broken": false,
+      "derivation": "/nix/store/v1cy648q1k1b8q6may76l9x1faq4b2hv-awscli2-2.30.6.drv",
+      "description": "Unified tool to manage your AWS services",
+      "install_id": "awscli2",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=7df7ff7d8e00218376575f0acdcc5d66741351ee",
+      "name": "awscli2-2.30.6",
+      "pname": "awscli2",
+      "rev": "7df7ff7d8e00218376575f0acdcc5d66741351ee",
+      "rev_count": 870157,
+      "rev_date": "2025-10-02T04:57:58Z",
+      "scrape_date": "2025-10-03T05:12:15.152317Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.30.6",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/8021q4w402yvwdkv4h2pb1868wnxmviv-awscli2-2.30.6-dist",
+        "out": "/nix/store/0sb2w1cs1zq68ywg8c4mhpsd5scvj4mq-awscli2-2.30.6"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "awscli2",
+      "broken": false,
+      "derivation": "/nix/store/x4plc3wra7wpk47jkpp2a5yxkzfz2df4-awscli2-2.30.6.drv",
+      "description": "Unified tool to manage your AWS services",
+      "install_id": "awscli2",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=7df7ff7d8e00218376575f0acdcc5d66741351ee",
+      "name": "awscli2-2.30.6",
+      "pname": "awscli2",
+      "rev": "7df7ff7d8e00218376575f0acdcc5d66741351ee",
+      "rev_count": 870157,
+      "rev_date": "2025-10-02T04:57:58Z",
+      "scrape_date": "2025-10-03T05:27:31.344469Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.30.6",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/r8nl2j8af0pi5kw5xycq5q8kbj9d8fhv-awscli2-2.30.6-dist",
+        "out": "/nix/store/if232s292gdpinfx6gbkd3407l1i7k64-awscli2-2.30.6"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
     {
       "attr_path": "eksctl",
       "broken": false,
@@ -136,120 +263,120 @@
       "priority": 5
     },
     {
-      "attr_path": "terraform",
+      "attr_path": "opentofu",
       "broken": false,
-      "derivation": "/nix/store/q92x11xkgnqjamzhn4mmk15317wxkwj8-terraform-1.13.3.drv",
+      "derivation": "/nix/store/982vhbdcbxygwq8wsmvwgha7jv2p51af-opentofu-1.10.6.drv",
       "description": "Tool for building, changing, and versioning infrastructure",
-      "install_id": "terraform",
-      "license": "BUSL-1.1",
+      "install_id": "opentofu",
+      "license": "MPL-2.0",
       "locked_url": "https://github.com/flox/nixpkgs?rev=7df7ff7d8e00218376575f0acdcc5d66741351ee",
-      "name": "terraform-1.13.3",
-      "pname": "terraform",
+      "name": "opentofu-1.10.6",
+      "pname": "opentofu",
       "rev": "7df7ff7d8e00218376575f0acdcc5d66741351ee",
       "rev_count": 870157,
       "rev_date": "2025-10-02T04:57:58Z",
-      "scrape_date": "2025-10-03T04:42:06.544280Z",
+      "scrape_date": "2025-10-03T04:40:34.994657Z",
       "stabilities": [
         "staging",
         "unstable"
       ],
-      "unfree": true,
-      "version": "1.13.3",
+      "unfree": false,
+      "version": "1.10.6",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/4pm27dwqyw4v04m566hzfyh195ccrc5i-terraform-1.13.3"
+        "out": "/nix/store/zw217n1jrrsfq2c1f8sg45ncp8185fra-opentofu-1.10.6"
       },
       "system": "aarch64-darwin",
       "group": "toplevel",
       "priority": 5
     },
     {
-      "attr_path": "terraform",
+      "attr_path": "opentofu",
       "broken": false,
-      "derivation": "/nix/store/n8bpd0pbqfrcxvjkhz8fl3ip0ki527vz-terraform-1.13.3.drv",
+      "derivation": "/nix/store/wq0va0pzvp9xk2514nkgfgbin1401iw3-opentofu-1.10.6.drv",
       "description": "Tool for building, changing, and versioning infrastructure",
-      "install_id": "terraform",
-      "license": "BUSL-1.1",
+      "install_id": "opentofu",
+      "license": "MPL-2.0",
       "locked_url": "https://github.com/flox/nixpkgs?rev=7df7ff7d8e00218376575f0acdcc5d66741351ee",
-      "name": "terraform-1.13.3",
-      "pname": "terraform",
+      "name": "opentofu-1.10.6",
+      "pname": "opentofu",
       "rev": "7df7ff7d8e00218376575f0acdcc5d66741351ee",
       "rev_count": 870157,
       "rev_date": "2025-10-02T04:57:58Z",
-      "scrape_date": "2025-10-03T04:59:13.169620Z",
+      "scrape_date": "2025-10-03T04:57:20.982151Z",
       "stabilities": [
         "staging",
         "unstable"
       ],
-      "unfree": true,
-      "version": "1.13.3",
+      "unfree": false,
+      "version": "1.10.6",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/jxc9p7gdzaww2734jzwddzgqbriihscp-terraform-1.13.3"
+        "out": "/nix/store/zi5ms7qpfijbzrb7dhh7j6lnkbnvzlip-opentofu-1.10.6"
       },
       "system": "aarch64-linux",
       "group": "toplevel",
       "priority": 5
     },
     {
-      "attr_path": "terraform",
+      "attr_path": "opentofu",
       "broken": false,
-      "derivation": "/nix/store/x703s8nnqcnm5danlr6pc9m35q4vr5ka-terraform-1.13.3.drv",
+      "derivation": "/nix/store/z5g75ljqs741dbxps3y1zckz4axsvf0n-opentofu-1.10.6.drv",
       "description": "Tool for building, changing, and versioning infrastructure",
-      "install_id": "terraform",
-      "license": "BUSL-1.1",
+      "install_id": "opentofu",
+      "license": "MPL-2.0",
       "locked_url": "https://github.com/flox/nixpkgs?rev=7df7ff7d8e00218376575f0acdcc5d66741351ee",
-      "name": "terraform-1.13.3",
-      "pname": "terraform",
+      "name": "opentofu-1.10.6",
+      "pname": "opentofu",
       "rev": "7df7ff7d8e00218376575f0acdcc5d66741351ee",
       "rev_count": 870157,
       "rev_date": "2025-10-02T04:57:58Z",
-      "scrape_date": "2025-10-03T05:14:01.443389Z",
+      "scrape_date": "2025-10-03T05:12:40.533716Z",
       "stabilities": [
         "staging",
         "unstable"
       ],
-      "unfree": true,
-      "version": "1.13.3",
+      "unfree": false,
+      "version": "1.10.6",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/75y0gxay06hzc0fjgikfmyasaj7qys54-terraform-1.13.3"
+        "out": "/nix/store/wzm2wx4l92zb2lg5xmham1dby3nbywz8-opentofu-1.10.6"
       },
       "system": "x86_64-darwin",
       "group": "toplevel",
       "priority": 5
     },
     {
-      "attr_path": "terraform",
+      "attr_path": "opentofu",
       "broken": false,
-      "derivation": "/nix/store/8yj0k3y3pgrlsnvfdc6mlim1cdn5ghda-terraform-1.13.3.drv",
+      "derivation": "/nix/store/7w63gj8drzrgpjyw6rk9j0ag7q675zfg-opentofu-1.10.6.drv",
       "description": "Tool for building, changing, and versioning infrastructure",
-      "install_id": "terraform",
-      "license": "BUSL-1.1",
+      "install_id": "opentofu",
+      "license": "MPL-2.0",
       "locked_url": "https://github.com/flox/nixpkgs?rev=7df7ff7d8e00218376575f0acdcc5d66741351ee",
-      "name": "terraform-1.13.3",
-      "pname": "terraform",
+      "name": "opentofu-1.10.6",
+      "pname": "opentofu",
       "rev": "7df7ff7d8e00218376575f0acdcc5d66741351ee",
       "rev_count": 870157,
       "rev_date": "2025-10-02T04:57:58Z",
-      "scrape_date": "2025-10-03T05:30:11.873002Z",
+      "scrape_date": "2025-10-03T05:28:17.966363Z",
       "stabilities": [
         "staging",
         "unstable"
       ],
-      "unfree": true,
-      "version": "1.13.3",
+      "unfree": false,
+      "version": "1.10.6",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/r0ri9bfmgzw95mqm0v8mji1hm6ql1zqv-terraform-1.13.3"
+        "out": "/nix/store/b9rhnj9cjy15sd5xjq1cwvbav4k4yff2-opentofu-1.10.6"
       },
       "system": "x86_64-linux",
       "group": "toplevel",

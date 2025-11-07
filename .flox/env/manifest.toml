@@ -15,8 +15,9 @@ version = 1
 ##  $ flox show gum     <- show all versions of a package
 ## -------------------------------------------------------------------
 [install]
-terraform.pkg-path = "terraform"
+opentofu.pkg-path = "opentofu"
 eksctl.pkg-path = "eksctl"
+awscli2.pkg-path = "awscli2"
 # gum.pkg-path = "gum"
 # gum.version = "^0.14.5"
 
