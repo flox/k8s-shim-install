@@ -35,13 +35,13 @@ Create a complete EKS cluster with VPC:
 cd terraform/new-cluster
 
 # Initialize Terraform
-terraform init
+tofu init
 
 # Review the planned changes
-terraform plan
+tofu plan
 
 # Create the infrastructure
-terraform apply
+tofu apply
 
 # Configure kubectl
 aws eks update-kubeconfig --name flox-eks-tf --region us-east-1
@@ -63,10 +63,10 @@ cp terraform/new-nodegroup/nodegroup.tf /path/to/your/cluster/terraform/
 cd /path/to/your/cluster/terraform/
 
 # Review the planned changes
-terraform plan
+tofu plan
 
 # Create the node group
-terraform apply
+tofu apply
 
 # Verify nodes
 kubectl get nodes --show-labels | grep flox.dev/enabled
